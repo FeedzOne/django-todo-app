@@ -1,0 +1,29 @@
+{% load tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Task App</title>
+    {% tailwind_css %}
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+        <p>{{ request.user}}</p>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else%}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+    <hr>
+    {% block content %}
+
+    {% endblock %}
+    
+</body>
+</html>

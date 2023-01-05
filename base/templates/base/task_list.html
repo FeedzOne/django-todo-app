@@ -1,48 +1,32 @@
-{% load tailwind_tags %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <title>Task App</title>
-    {% tailwind_css %}
-</head>
-<body>
-    {% if request.user.is_authenticated %}
-        <p>{{ request.user}}</p>
-        <a href="{% url 'logout' %}">Logout</a>
-    {% else%}
-        <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-    <hr>
+{% extends 'layout.html' %}
+{% block content %}    
     <div class="container mx-auto">
         <div class="text-5xl container mx-auto">
-            <h1>My todo list</h1>
+            <h1 class="text">My todo list</h1>
             <a href=" {%url 'task-create' %}">Create Task</a>
         </div>
-        <div class="container mx-auto font-caveat text-2xx">
-            <table>
-                <tr>
-                    <th class="text-3xl">Item</th>
-                </tr>
-                {% for task in Tasks %}
-                <tr>
-                    <td class="text-2xl">{{task.title}}</td>
-                    <td><a href="{% url 'task' task.id %}">View</a></td>
-                    <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
-                    <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
-                </tr>
-                {% empty %}
-                    <h3>No items in list</h3>
-                {% endfor %}
+        <div class="container mx-auto font-caveat text-2xl">
+            <table class="table-fixed">
+                <thead>
+                    <tr>
+                      <th>Task</th>
+                      <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in Tasks %}
+                    <tr>
+                        <td class="text-2xl">{{task.title}}</td>
+                        <td><a href="{% url 'task' task.id %}">View</a></td>
+                        <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
+                        <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
+                    </tr>
+                    
+                    {% empty %}
+                        <h3>No items in list</h3>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
     </div>
-    
-</body>
-</html>
+{% endblock %}

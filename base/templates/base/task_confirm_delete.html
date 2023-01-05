@@ -1,18 +1,5 @@
-{% load tailwind_tags %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <title>Delete Task</title>
-    {% tailwind_css %}
-</head>
-<body>
+{% extends 'layout.html' %}
+{% block content %}  
     <h1>Delete Task</h1>
     <form method="POST">
         {% csrf_token %}
@@ -20,5 +7,4 @@
         <input type="submit" value="Delete"/>
           <a href="{% url 'tasks' %}">Go back</a>
     </form>
-</body>
-</html>
+{% endblock %}
