@@ -9,13 +9,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <title>My task</title>
+    <title>Create Task</title>
     {% tailwind_css %}
 </head>
 <body>
-    <h1>My Task</h1>
-    <div class="container mx-auto">
-        <h1>Task: {{ Task }}</h1>
-    </div>
+    <h1>Create Task</h1>
+    <a href="{% url 'tasks' %}">Go back</a>
+    <form method='POST' action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Button
+          </button>
+    </form>
 </body>
 </html>
