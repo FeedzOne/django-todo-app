@@ -1,11 +1,12 @@
 {% extends 'layout.html' %}
 {% block content %}    
-    <div class="container mx-auto">
-        <div class="text-5xl container mx-auto">
+    <div class="container mx-auto ">
+        <div class="text-5xl container mx-auto w-50">
             <h1 class="text">My todo list</h1>
+            <hr>
             <a href=" {%url 'task-create' %}">Create Task</a>
         </div>
-        <div class="container mx-auto font-caveat text-2xl">
+        <div class="container mx-auto font-caveat text-2xl px-4">
             <table class="table-fixed">
                 <thead>
                     <tr>

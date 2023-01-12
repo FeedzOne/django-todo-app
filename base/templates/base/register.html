@@ -9,17 +9,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <title>Login</title>
+    <title>Register</title>
     {% load static %}
     {% tailwind_css %}
 </head>
 <body>
-    <h1>Login</h1>
+    <h1>Register</h1>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Login">
+        <input type="submit" value="Register">
     </form>
-    <p>Don´t have an account? <a href="{% url 'register' %}">Register</a></p>
+    <p>Already have an account? <a href="">Login instead</a></p>
 </body>
 </html>
