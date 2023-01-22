@@ -1,12 +1,17 @@
 {% extends 'layout.html' %}
-{% block content %}  
-    <h1>Create Task</h1>
-    <a href="{% url 'tasks' %}">Go back</a>
-    <form method='POST' action="">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Button
-          </button>
-    </form>
+{% block content %} 
+<div class="mt-5 mb-5">
+    <a class="text-3xl dark:text-white text-slate-700" href="{% url 'tasks' %}">Go back &#x21a9</a>
+</div> 
+    
+    <div class="container mx-auto bg-slate-100 dark:bg-slate-700 w-[90%] sm:w-[85%] md-w-[70%] xl:w-[60%] dark:text-white rounded-xl drop-shadow-2xl">
+        <h1 class="text-5xl pt-5">Create Task</h1>
+        <form method='POST' class="max-w-[90%] justify-center mx-auto pt-5 text-3xl">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded text-2xl mt-5 mb-5">
+                Add Task
+            </button>
+        </form>
+    </div>  
 {% endblock %}

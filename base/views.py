@@ -18,10 +18,15 @@ from django.contrib.auth import login
 
 from .models import Task
 
+from .forms import TaskForm, TaskUpdate
+
+from .forms import UserLoginForm, UserCreationForm
+
 
 class CustomLoginView(LoginView):
     template_name = 'base/login.html'
-    fields = '__all__'
+    ##fields = '__all__'
+    authentication_form=UserLoginForm
     redirect_authenticated_user = True
 
     def get_success_url(self): 
@@ -31,6 +36,7 @@ class RegisterPage(FormView):
     template_name = "base/register.html"
     form_class = UserCreationForm
     redirect_authenticated_user = True
+    form_class = UserCreationForm
     success_url = reverse_lazy('tasks')
 
     def form_valid(self, form):
@@ -58,7 +64,7 @@ class TaskList(LoginRequiredMixin, ListView):
         if search_input:
             context['Tasks'] = context['Tasks'].filter(
                 title__icontains = search_input)
-        context
+        context['search_input'] = search_input
         return context
         
 
@@ -69,7 +75,8 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['title', 'description', 'complete']
+    form_class = TaskForm
+    ##fields = ['title', 'description', 'complete']
     success_url = reverse_lazy('tasks')
 
     def form_valid(self, form):
@@ -78,7 +85,8 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ['title', 'description', 'complete']
+    #fields = ['title', 'description', 'complete']
+    form_class = TaskUpdate
     success_url = reverse_lazy('tasks')
 
 class DeleteView(LoginRequiredMixin, DeleteView):

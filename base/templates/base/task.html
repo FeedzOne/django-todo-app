@@ -1,7 +1,28 @@
 {% extends 'layout.html' %}
 {% block content %}  
-    <h1>My Task</h1>
-    <div class="container mx-auto">
-        <h1>Task: {{ Task }}</h1>
+<div class="container pt-5 pb-5 justify-center items-center h-15 my-5 w-[95%] md:w-[90%] mx-auto py-0 text-xl md:text-2xl xl:text-3xl text-slate-700 dark:text-white bg-slate-200 dark:bg-slate-700 rounded-xl">
+    <h1 class="dark:text-white text-5xl mt-10">Task Detail</h1>
+    <div class="mt-5 mb-5">
+        <a class="text-3xl dark:text-white" href="{% url 'tasks' %}">Go back &#x21a9</a>
+    </div>
+    <div class="w-[90%] mx-auto mb-5">
+        <hr class="border-slate-700 drop-shadow-xl">
+    </div>
+    
+    <div class="grid gap-2 grid-cols-2 grid-rows-4 ">
+        <p class="">Task:</p>
+        <p class="text-clip break-words">{{ Task.title }}</p>
+        <p>Description:</p>
+        <p class="text-clip break-words">{{ Task.description }}</p>
+        <p>Complete?</p>
+        <div class="w-[5%] col-start-0 col-span-1 items-center mx-auto px-8 dark:text-white">  
+            {% if Task.complete is True %}
+                <p class="ml-[50%] mr-[50%]">&#x2611</p>
+            {% else %}
+                <p class="ml-[50%] mr-[50%]">&#x2610</p>
+            {% endif %}
+        </div>
+        <p>Date:</p>
+        <p class="text-clip break-words">{{ Task.created }}</p>  
     </div>
 {% endblock %}

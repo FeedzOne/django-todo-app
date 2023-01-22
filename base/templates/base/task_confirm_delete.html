@@ -1,10 +1,24 @@
 {% extends 'layout.html' %}
-{% block content %}  
-    <h1>Delete Task</h1>
+{% block content %}
+<div class="container w-[90%] mx-auto bg-slate-200 dark:bg-slate-700 rounded-xl">
+    <h1 class="text-3xl text-slate-700 dark:text-white my-10 pt-5">Delete Task</h1>
     <form method="POST">
         {% csrf_token %}
-        <p>Are you sure to delete this task?"{{task}}"</p>
-        <input type="submit" value="Delete"/>
-          <a href="{% url 'tasks' %}">Go back</a>
+        <div class="text-3xl text-slate-700 dark:text-white">
+            <p class="mb-5">Are you sure to delete this task?</p>
+            <p class="mb-5">"{{ Task.title }}"</p>
+        </div>
+        <div class="flex place-content-center space-x-4 pb-5">
+            <button class="h-[50px] w-[130px] bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-2xl mt-5 mb-5">
+            Delete
+        </button>
+        <button class="h-[50px] w-[130px] bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded text-2xl mt-5 mb-5">
+            <a class="text-3xl" href="{% url 'tasks' %}">Cancel</a>
+        </button>
+        </div>
+        
+        
     </form>
+</div>
+    
 {% endblock %}
