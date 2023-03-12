@@ -10,13 +10,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="/theme/static/css/main.css">
     <title>Task App</title>
     {% tailwind_css %}
 </head>
 <body class="bg text-center bg-slate-100 dark:bg-slate-800 w-full h-full">
     {% if request.user.is_authenticated %}
-    
+    <header>
     <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded-b-lg dark:bg-gray-900 drop-shadow-2xl">
         <div class="container flex flex-wrap items-center justify-between mx-auto">
         <a href="" class="flex items-center">
@@ -38,7 +41,7 @@
         </div>  
         </div>
       </nav>
-
+    </header>
     
         
     {% else%}
@@ -52,9 +55,59 @@
     </button>
     {% endif %}
     <hr>
-    {% block content %}
+    <main class="min-h-screen">
+        <div class="container mx-auto pb-10 w-[95%]">
+            {% block content %}
 
-    {% endblock %}
+            {% endblock %}
+        </div>
+    </main>
     
+    <!--FOOTER--> 
+<footer class="p-4 bg-white border-gray-200 px-2 sm:px-4 rounded-b-lg dark:bg-gray-900 drop-shadow-2xl inset-x-0 bottom-0 mt-10 text-slate-700 dark:text-white">
+    <div class="sm:flex sm:items-center sm:justify-between">
+        <a href="https://FeedzOne.com/" class="flex items-center mb-4 sm:mb-0">
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">FeedzOne</span>
+        </a>
+    </div>
+    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
+    <div class="contaner mx-auto w-[50vw] mb-5">
+      <h2 class="text-3xl font-bold mb-4 text-center">My socials</h2>
+            <ul class="flex space-x-2 text-3xl space-x-4 justify-center">
+              <li>
+                <a href="https://www.facebook.com/feedzonetv" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-facebook"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UCR49N6zJwTKV_KLA3upVVpQ" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-youtube"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/FeedzOne" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-github hover:opacity-80"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/erick-miguel-paredes-ortega/" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-linkedin"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/FeedzOneTV" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/feedzonetv/" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </li>
+            </ul>
+    </div>
+    <span class="block text-sm text-gray-500 text-center dark:text-gray-400">&#169; 2022 <a href="https://FeedzOne.com/" class="hover:underline">FeedzOne</a>. All Rights Reserved.
+    </span>
+  </footer>
 </body>
 </html>
